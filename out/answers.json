@@ -1,0 +1,148 @@
+{
+  "project": {
+    "name": "Vroomly",
+    "description": "A vehicle rental marketplace where customers can browse, book, and pay for cars, vans, or scooters. Admins manage fleet and bookings."
+  },
+  "platform": {
+    "targets": [
+      "web"
+    ],
+    "responsive": true,
+    "breakpoints": [
+      "sm",
+      "md",
+      "lg",
+      "xl"
+    ]
+  },
+  "fidelity": "production-code",
+  "style": {
+    "aesthetic": [
+      "minimal",
+      "futuristic"
+    ],
+    "designSystem": "tailwind",
+    "brand": {
+      "primaryColor": "#0EA5E9",
+      "secondaryColor": "#111827",
+      "fontFamily": "Inter",
+      "logoUrl": "https://example.com/logo.png"
+    },
+    "modes": [
+      "light",
+      "dark",
+      "system"
+    ]
+  },
+  "users": {
+    "roles": [
+      "customer",
+      "admin",
+      "fleet manager"
+    ],
+    "accessControl": true
+  },
+  "flows": [
+    "browse vehicles",
+    "search & filter",
+    "view vehicle details",
+    "booking",
+    "checkout & payments",
+    "manage bookings",
+    "admin fleet CRUD"
+  ],
+  "integrations": [
+    "maps",
+    "payments",
+    "calendar",
+    "push",
+    "analytics",
+    "auth-oauth",
+    "file-upload"
+  ],
+  "localization": {
+    "language": "en",
+    "region": "US",
+    "i18n": true
+  },
+  "accessibility": {
+    "wcag": "AA",
+    "features": [
+      "keyboard",
+      "screen-reader",
+      "contrast"
+    ]
+  },
+  "data": {
+    "entities": [
+      "Vehicle",
+      "Booking",
+      "User",
+      "PaymentMethod",
+      "Location"
+    ],
+    "sampleRecordsNeeded": true
+  },
+  "screens": [
+    {
+      "name": "Landing/Home",
+      "priority": 1,
+      "mustHave": true,
+      "notes": ""
+    },
+    {
+      "name": "Vehicle List & Filters",
+      "priority": 2,
+      "mustHave": true,
+      "notes": "Sort by price, rating, distance"
+    },
+    {
+      "name": "Vehicle Detail",
+      "priority": 3,
+      "mustHave": true,
+      "notes": "Photo gallery, map, availability calendar"
+    },
+    {
+      "name": "Booking Flow",
+      "priority": 4,
+      "mustHave": true,
+      "notes": "Date/time pickers, pricing breakdown"
+    },
+    {
+      "name": "Checkout & Payment",
+      "priority": 5,
+      "mustHave": true,
+      "notes": ""
+    },
+    {
+      "name": "Profile & Bookings",
+      "priority": 6,
+      "mustHave": true,
+      "notes": ""
+    },
+    {
+      "name": "Admin: Fleet Management",
+      "priority": 7,
+      "mustHave": false,
+      "notes": ""
+    }
+  ],
+  "output": {
+    "format": "code-react",
+    "tech": {
+      "react": {
+        "useTypescript": true,
+        "useTailwind": true,
+        "state": "zustand"
+      }
+    },
+    "deliverables": [
+      "figma-json"
+    ],
+    "constraints": [
+      "tree-shakeable",
+      "a11y-annotations",
+      "comments-why"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "prompt-factory",
+  "version": "1.0.0",
+  "main": "index.js",
+ "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "run": "node dist/index.js",
+    "validate": "ts-node src/validate.ts",
+    "demo": "ts-node src/demo.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "chalk": "^5.6.0",
+    "inquirer": "^12.9.4",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.9",
+    "@types/node": "^24.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}

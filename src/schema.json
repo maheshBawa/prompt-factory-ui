@@ -1,0 +1,223 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UIPromptRequest",
+  "type": "object",
+  "required": ["project", "platform", "screens", "output"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "required": ["name", "description"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "platform": {
+      "type": "object",
+      "required": ["targets", "responsive"],
+      "properties": {
+        "targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "enum": ["web", "ios", "android", "desktop", "cross"] }
+        },
+        "responsive": { "type": "boolean" },
+        "breakpoints": {
+          "type": "array",
+          "items": { "enum": ["sm", "md", "lg", "xl"] }
+        }
+      }
+    },
+    "fidelity": {
+      "type": "string",
+      "enum": ["wireframe", "high-fidelity", "production-code"],
+      "default": "production-code"
+    },
+    "style": {
+      "type": "object",
+      "properties": {
+        "aesthetic": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "minimal",
+              "corporate",
+              "playful",
+              "luxury",
+              "futuristic",
+              "neumorphic",
+              "brutalist"
+            ]
+          }
+        },
+        "designSystem": {
+          "type": "string",
+          "enum": [
+            "material",
+            "fluent",
+            "bootstrap",
+            "tailwind",
+            "chakra",
+            "none",
+            "custom"
+          ],
+          "default": "tailwind"
+        },
+        "brand": {
+          "type": "object",
+          "properties": {
+            "primaryColor": { "type": "string" },
+            "secondaryColor": { "type": "string" },
+            "fontFamily": { "type": "string" },
+            "logoUrl": { "type": "string" }
+          }
+        },
+        "modes": {
+          "type": "array",
+          "items": { "enum": ["light", "dark", "system"] },
+          "default": ["light"]
+        }
+      }
+    },
+    "users": {
+      "type": "object",
+      "properties": {
+        "roles": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "accessControl": { "type": "boolean", "default": false }
+      }
+    },
+    "flows": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Key user flows to support, e.g. browse vehicles, booking, payment"
+    },
+    "integrations": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "maps",
+          "payments",
+          "calendar",
+          "push",
+          "analytics",
+          "auth-oauth",
+          "file-upload"
+        ]
+      }
+    },
+    "localization": {
+      "type": "object",
+      "properties": {
+        "language": { "type": "string", "default": "en" },
+        "region": { "type": "string" },
+        "i18n": { "type": "boolean", "default": false }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "properties": {
+        "wcag": { "type": "string", "enum": ["A", "AA", "AAA"] },
+        "features": {
+          "type": "array",
+          "items": {
+            "enum": ["keyboard", "screen-reader", "contrast", "motion-reduce"]
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "entities": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "sampleRecordsNeeded": { "type": "boolean", "default": true }
+      }
+    },
+    "screens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "priority": { "type": "integer", "minimum": 1 },
+          "mustHave": { "type": "boolean", "default": true },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["format"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": [
+            "description",
+            "component-spec",
+            "code-react",
+            "code-next",
+            "code-vue",
+            "code-flutter",
+            "code-swiftui"
+          ]
+        },
+        "tech": {
+          "type": "object",
+          "properties": {
+            "react": {
+              "type": "object",
+              "properties": {
+                "useTypescript": { "type": "boolean", "default": true },
+                "useTailwind": { "type": "boolean", "default": true },
+                "state": {
+                  "enum": ["none", "zustand", "redux", "context"],
+                  "default": "none"
+                }
+              }
+            },
+            "flutter": {
+              "type": "object",
+              "properties": {
+                "state": {
+                  "enum": ["provider", "riverpod", "bloc", "none"],
+                  "default": "provider"
+                }
+              }
+            }
+          }
+        },
+        "deliverables": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "component-files",
+              "story-examples",
+              "test-cases",
+              "figma-json",
+              "readme"
+            ]
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "no-external-icons",
+              "no-third-party",
+              "tree-shakeable",
+              "a11y-annotations",
+              "comments-why"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

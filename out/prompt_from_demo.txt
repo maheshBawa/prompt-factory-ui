@@ -1,0 +1,169 @@
+SYSTEM:
+You are a senior product designer and front-end engineer. Produce UI that is consistent, accessible, and production-viable. When asked for code, ensure it compiles.
+
+USER:
+Build UI for a project with the following context (JSON follows). Interpret missing values sensibly.
+
+<CONTEXT>
+{
+  "project": {
+    "name": "Vroomly",
+    "description": "Vehicle rental marketplace for cars, vans, and scooters with short- and long-term bookings."
+  },
+  "platform": {
+    "targets": [
+      "web"
+    ],
+    "responsive": true,
+    "breakpoints": [
+      "sm",
+      "md",
+      "lg"
+    ]
+  },
+  "fidelity": "production-code",
+  "style": {
+    "aesthetic": [
+      "minimal",
+      "futuristic"
+    ],
+    "designSystem": "tailwind",
+    "brand": {
+      "primaryColor": "#0EA5E9",
+      "secondaryColor": "#111827",
+      "fontFamily": "Inter"
+    },
+    "modes": [
+      "light",
+      "dark"
+    ]
+  },
+  "users": {
+    "roles": [
+      "customer",
+      "admin",
+      "fleet-manager"
+    ],
+    "accessControl": true
+  },
+  "flows": [
+    "browse vehicles",
+    "search & filter",
+    "view vehicle details",
+    "booking",
+    "checkout & payments",
+    "manage bookings",
+    "admin fleet CRUD"
+  ],
+  "integrations": [
+    "maps",
+    "payments",
+    "calendar",
+    "analytics",
+    "auth-oauth"
+  ],
+  "localization": {
+    "language": "en",
+    "region": "US",
+    "i18n": true
+  },
+  "accessibility": {
+    "wcag": "AA",
+    "features": [
+      "keyboard",
+      "screen-reader",
+      "contrast"
+    ]
+  },
+  "data": {
+    "entities": [
+      "Vehicle",
+      "Booking",
+      "User",
+      "PaymentMethod",
+      "Location"
+    ],
+    "sampleRecordsNeeded": true
+  },
+  "screens": [
+    {
+      "name": "Landing/Home",
+      "priority": 1,
+      "mustHave": true
+    },
+    {
+      "name": "Vehicle List & Filters",
+      "priority": 2,
+      "mustHave": true,
+      "notes": "Sort by price, rating, distance"
+    },
+    {
+      "name": "Vehicle Detail",
+      "priority": 3,
+      "mustHave": true,
+      "notes": "Photo gallery, map, availability calendar"
+    },
+    {
+      "name": "Booking Flow",
+      "priority": 4,
+      "mustHave": true,
+      "notes": "Date/time pickers, pricing breakdown"
+    },
+    {
+      "name": "Checkout & Payment",
+      "priority": 5,
+      "mustHave": true
+    },
+    {
+      "name": "Profile & Bookings",
+      "priority": 6,
+      "mustHave": true
+    },
+    {
+      "name": "Admin: Fleet Management",
+      "priority": 7,
+      "mustHave": false
+    }
+  ],
+  "output": {
+    "format": "code-react",
+    "tech": {
+      "react": {
+        "useTypescript": true,
+        "useTailwind": true,
+        "state": "none"
+      }
+    },
+    "deliverables": [
+      "component-files",
+      "story-examples",
+      "readme"
+    ],
+    "constraints": [
+      "a11y-annotations",
+      "tree-shakeable",
+      "comments-why"
+    ]
+  }
+}
+</CONTEXT>
+
+TASK:
+1) If output.format is "description": produce a concise, hierarchical UI spec (navigation, layouts, components, states, error/empty/loading).
+2) If output.format is "component-spec": list atomic components, props, events, variants, accessibility notes, and state diagrams where useful.
+3) If output.format starts with "code-": generate complete, minimal, production-ready code for the requested framework with:
+   - folder structure
+   - at least the top N screens by priority from 'screens'
+   - form validation, empty/error/loading states
+   - basic a11y (labels, alt text, focus management)
+   - comments explaining non-obvious decisions
+   - sample data when data.sampleRecordsNeeded=true
+   - honor designSystem (e.g., Tailwind classes or Material components)
+   - respect constraints and deliverables
+
+RULES:
+- Follow style.modes, localization, accessibility, and integrations (e.g., Maps on vehicle detail, Payments on checkout).
+- Use the platform.targets and responsive behavior responsibly.
+- If something is ambiguous, choose reasonable defaults and state assumptions at the top.
+- Avoid external libraries unless permitted; prefer built-ins and the specified design system.
+- Keep code cohesive and idiomatic for the chosen stack.

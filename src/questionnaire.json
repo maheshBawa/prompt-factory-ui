@@ -1,0 +1,246 @@
+[
+  {
+    "id": "project.name",
+    "label": "Project name",
+    "type": "text",
+    "required": true
+  },
+  {
+    "id": "project.description",
+    "label": "What are we building?",
+    "type": "textarea",
+    "required": true,
+    "placeholder": "e.g., Vehicle rental marketplace for short-term hires"
+  },
+
+  {
+    "id": "platform.targets",
+    "label": "Platforms",
+    "type": "multiselect",
+    "options": ["web", "ios", "android", "desktop", "cross"],
+    "required": true
+  },
+  {
+    "id": "platform.responsive",
+    "label": "Responsive design?",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "id": "platform.breakpoints",
+    "label": "Breakpoints",
+    "type": "multiselect",
+    "options": ["sm", "md", "lg", "xl"],
+    "dependsOn": "platform.responsive=true"
+  },
+
+  {
+    "id": "fidelity",
+    "label": "Fidelity",
+    "type": "select",
+    "options": ["wireframe", "high-fidelity", "production-code"],
+    "default": "production-code"
+  },
+
+  {
+    "id": "style.aesthetic",
+    "label": "Aesthetic keywords",
+    "type": "multiselect",
+    "options": [
+      "minimal",
+      "corporate",
+      "playful",
+      "luxury",
+      "futuristic",
+      "neumorphic",
+      "brutalist"
+    ]
+  },
+  {
+    "id": "style.designSystem",
+    "label": "Design system",
+    "type": "select",
+    "options": [
+      "material",
+      "fluent",
+      "bootstrap",
+      "tailwind",
+      "chakra",
+      "none",
+      "custom"
+    ],
+    "default": "tailwind"
+  },
+  {
+    "id": "style.brand.primaryColor",
+    "label": "Primary color (hex/name)",
+    "type": "text"
+  },
+  {
+    "id": "style.brand.secondaryColor",
+    "label": "Secondary color",
+    "type": "text"
+  },
+  { "id": "style.brand.fontFamily", "label": "Font family", "type": "text" },
+  { "id": "style.brand.logoUrl", "label": "Logo URL", "type": "text" },
+  {
+    "id": "style.modes",
+    "label": "Color modes",
+    "type": "multiselect",
+    "options": ["light", "dark", "system"],
+    "default": ["light"]
+  },
+
+  {
+    "id": "users.roles",
+    "label": "User roles",
+    "type": "chips",
+    "placeholder": "e.g., customer, admin, fleet manager"
+  },
+  {
+    "id": "users.accessControl",
+    "label": "Role-based views?",
+    "type": "boolean",
+    "default": false
+  },
+
+  {
+    "id": "flows",
+    "label": "Key user flows",
+    "type": "chips",
+    "placeholder": "browse vehicles, booking, checkout, profile"
+  },
+  {
+    "id": "integrations",
+    "label": "Integrations",
+    "type": "multiselect",
+    "options": [
+      "maps",
+      "payments",
+      "calendar",
+      "push",
+      "analytics",
+      "auth-oauth",
+      "file-upload"
+    ]
+  },
+
+  {
+    "id": "localization.language",
+    "label": "Primary language",
+    "type": "text",
+    "default": "en"
+  },
+  { "id": "localization.region", "label": "Region/locale", "type": "text" },
+  {
+    "id": "localization.i18n",
+    "label": "Internationalization?",
+    "type": "boolean",
+    "default": false
+  },
+
+  {
+    "id": "accessibility.wcag",
+    "label": "WCAG level",
+    "type": "select",
+    "options": ["A", "AA", "AAA"]
+  },
+  {
+    "id": "accessibility.features",
+    "label": "Accessibility features",
+    "type": "multiselect",
+    "options": ["keyboard", "screen-reader", "contrast", "motion-reduce"]
+  },
+
+  {
+    "id": "data.entities",
+    "label": "Domain entities",
+    "type": "chips",
+    "placeholder": "Vehicle, Booking, User, Payment"
+  },
+  {
+    "id": "data.sampleRecordsNeeded",
+    "label": "Include sample data?",
+    "type": "boolean",
+    "default": true
+  },
+
+  {
+    "id": "screens",
+    "label": "Screens (name/priority/notes)",
+    "type": "table",
+    "columns": ["name", "priority", "mustHave", "notes"],
+    "required": true
+  },
+
+  {
+    "id": "output.format",
+    "label": "Output format",
+    "type": "select",
+    "options": [
+      "description",
+      "component-spec",
+      "code-react",
+      "code-next",
+      "code-vue",
+      "code-flutter",
+      "code-swiftui"
+    ],
+    "required": true
+  },
+  {
+    "id": "output.tech.react.useTypescript",
+    "label": "React: TypeScript",
+    "type": "boolean",
+    "default": true,
+    "dependsOn": "output.format in [code-react,code-next]"
+  },
+  {
+    "id": "output.tech.react.useTailwind",
+    "label": "React: Tailwind",
+    "type": "boolean",
+    "default": true,
+    "dependsOn": "output.format in [code-react,code-next]"
+  },
+  {
+    "id": "output.tech.react.state",
+    "label": "React state",
+    "type": "select",
+    "options": ["none", "zustand", "redux", "context"],
+    "default": "none",
+    "dependsOn": "output.format in [code-react,code-next]"
+  },
+  {
+    "id": "output.tech.flutter.state",
+    "label": "Flutter state",
+    "type": "select",
+    "options": ["provider", "riverpod", "bloc", "none"],
+    "default": "provider",
+    "dependsOn": "output.format=code-flutter"
+  },
+
+  {
+    "id": "output.deliverables",
+    "label": "Deliverables",
+    "type": "multiselect",
+    "options": [
+      "component-files",
+      "story-examples",
+      "test-cases",
+      "figma-json",
+      "readme"
+    ]
+  },
+  {
+    "id": "output.constraints",
+    "label": "Constraints",
+    "type": "multiselect",
+    "options": [
+      "no-external-icons",
+      "no-third-party",
+      "tree-shakeable",
+      "a11y-annotations",
+      "comments-why"
+    ]
+  }
+]
