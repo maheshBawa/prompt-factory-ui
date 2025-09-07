@@ -134,4 +134,3 @@ If you have ideas for better questions, new output formats, or UX improvements, 
 
 ---
 
-✅ This is the **final, ready-to-go README.md** — just replace your file with this, commit, and push. You won't need to add sections manually anymore.
